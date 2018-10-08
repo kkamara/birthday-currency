@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SubmissionController@index')->name('home');
+Route::get('/create', 'SubmissionController@create')->name('submissionCreate');
+Route::post('/create', 'SubmissionController@store')->name('submissionStore');
