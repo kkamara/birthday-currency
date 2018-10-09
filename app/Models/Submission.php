@@ -37,9 +37,9 @@ class Submission extends Model
 
         if(!empty($search))
         {
-
+            $query->where('birthday', '=', $search);
         }
 
-        return $query->orderBy('id', 'DESC')->distinct();
+        return $query->orderBy('birthday', 'DESC')->distinct();
     }
 }

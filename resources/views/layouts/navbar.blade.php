@@ -13,10 +13,10 @@
             <a class="nav-link" href="{{ route('submissionCreate') }}">Give it a go!<span class="sr-only">(current)</span></a>
         </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form method="GET" action="{{ route('home') }}" class="form-inline my-2 my-lg-0">
             <label>
                 Search:
-                <input class="form-control mr-sm-2" type="date" placeholder="Search a birthday!" aria-label="Search">
+                <input name="search" class="form-control mr-sm-2" type="date" placeholder="Search a birthday!" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </label>
         </form>

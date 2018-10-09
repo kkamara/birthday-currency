@@ -40,7 +40,7 @@
 
             @else
                 <small>
-                    No submissions have been made.
+                    No submissions found.
                 </small>
             @endif
         </div>
