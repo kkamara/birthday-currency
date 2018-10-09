@@ -15,6 +15,18 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Submission::class, function(Faker $faker) {
     return [
-        'birthday' => $faker->dateTimeBetween('now', '+1 year'),
+        'birthday' => $faker->dateTimeThisYear(),
+        'occurrences'   => mt_rand(0, 3),
+    ];
+});
+
+$factory->define(App\Models\ExchangeRate::class, function(Faker $faker) {
+
+    $submission = App\Models\Submission::inRandomOrder()->first() ??
+                    factory(App\Models\Submission::class)->create();
+
+    return [
+        'submission_id' => $submission->id,
+        'hong_kong_dollar' => $faker->randomFloat(),
     ];
 });

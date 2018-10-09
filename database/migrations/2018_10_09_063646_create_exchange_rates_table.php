@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubmissionsTable extends Migration
+class CreateExchangeRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSubmissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('submissions', function (Blueprint $table) {
+        Schema::create('exchange_rates', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('birthday');
-            $table->integer('occurrences');
+            $table->integer('submission_id')->references('id')->on('submissions');
+            $table->decimal('hong_kong_dollar', 65, 4);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateSubmissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('submissions');
+        Schema::dropIfExists('exchange_rates');
     }
 }
