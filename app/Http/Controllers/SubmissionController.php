@@ -8,11 +8,13 @@ use Validator;
 
 class SubmissionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $submissions = Submission::getSubmissions($request)->paginate(7);
+
         return view('submission.index', [
             'title' => 'View All'
-        ]);
+        ])->with(compact('submissions'));
     }
 
     public function create()

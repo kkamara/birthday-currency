@@ -16,12 +16,15 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\Submission::class, function(Faker $faker) {
     return [
         'birthday' => $faker->dateTimeThisYear(),
-        'occurrences'   => mt_rand(0, 3),
+        'occurrences'   => mt_rand(1, 3),
     ];
+})->afterCreating(App\Models\Submission::class, function ($submission, Faker $faker) {
+    factory(App\Models\ExchangeRate::class)->create([
+        'submission_id' => $submission->id,
+    ]);
 });
 
 $factory->define(App\Models\ExchangeRate::class, function(Faker $faker) {
-
     $submission = App\Models\Submission::inRandomOrder()->first() ??
                     factory(App\Models\Submission::class)->create();
 
