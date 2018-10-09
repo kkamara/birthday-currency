@@ -16,7 +16,7 @@ class CreateSubmissionsTable extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->increments('id');
             $table->date('birthday');
-            $table->integer('occurrences');
+            $table->integer('occurrences')->default(1);
             $table->timestamps();
         });
     }

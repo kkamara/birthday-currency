@@ -15,7 +15,7 @@
     @include('layouts.navbar')
 
     <div class="container">
-        @include('layouts.errors')
+        @include('layouts.flashes')
 
         @section('content')
 

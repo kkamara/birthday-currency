@@ -12,5 +12,5 @@
 */
 
 Route::get('/', 'SubmissionController@index')->name('home');
-Route::get('/create', 'SubmissionController@create')->name('submissionCreate');
-Route::post('/create', 'SubmissionController@store')->name('submissionStore');
+Route::get('/giveitago', 'SubmissionController@create')->name('submissionCreate');
+Route::post('/giveitago', 'SubmissionController@store')->name('submissionStore');

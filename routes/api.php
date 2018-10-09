@@ -13,3 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('/giveitago/errors', 'SubmissionController@getStoreErrors')->name('getStoreErrors');
+

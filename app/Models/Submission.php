@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Validator;
 
 class Submission extends Model
 {
@@ -41,5 +42,46 @@ class Submission extends Model
         }
 
         return $query->orderBy('birthday', 'DESC')->distinct();
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array
+     */
+    public static function getPostErrors($request)
+    {
+        $validator = Validator::make($request->all(), [
+            'birthday' => 'required|date',
+        ]);
+        /**
+         * Store validator errors
+         *
+         * @var array
+         */
+        $errors = $validator->errors()->all();
+
+        if(empty($errors))
+        {
+            /**
+             * Sanitize birthday input.
+             *
+             * @var string
+             */
+            $birthday = filter_var($request->input('birthday'), FILTER_SANITIZE_STRING);
+            /**
+             * Check if birthday occurred in the last year
+             */
+            $now = Carbon::now();
+            $oneYearAgo = Carbon::now()->subDays(365);
+            $birthday = Carbon::parse($birthday);
+
+            if($birthday->between($now, $oneYearAgo) == FALSE)
+            {
+                array_push($errors, 'Select your birthday within the last year.');
+            }
+        }
+
+        return $errors;
     }
 }
