@@ -85,9 +85,12 @@ class SubmissionController extends Controller
             /**
              * Query Fixer API for exchange results
              */
-            $url = config('app.fixer-base-url') .
-                "$birthday?access_key=" . config('app.fixer-api-key') .
-                '&symbols=HKD';
+            $url = sprintf(
+                "%s/%s?access_key=%s&symbols=HKD",
+                config('app.fixer-base-url'),
+                $birthday,
+                config('app.fixer-api-key')
+            );
             $r = Curl::to($url)->get();
             $r = json_decode($r, TRUE);
             /**
