@@ -1,1 +1,0 @@
-<div class="alert alert-danger error-container d-none"></div>
