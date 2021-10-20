@@ -1,34 +1,43 @@
 # Birthday Currency
 
-This Laravel 5 app allows users to discover the exchange rate for Hong Kong Dollar on the day of their birthday. Built with [laravel](https://www.laravel.com) and [fixer](https://fixer.io/).
+This [adonis](https://adonisjs.com/) app allows users to discover the exchange rate for Hong Kong Dollar on the day of their birthday. Built with [laravel](https://www.laravel.com) and [fixer](https://fixer.io/).
+
+## Requires
+
+- [Docker-compose](https://docs.docker.com/compose/install/)
 
 ## Installation
 
-Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
-
-## Setup
-
-Our [Makefile](https://github.com/kkamara/laravel-react-ecommerce/blob/master/Makefile) is based at the root of project directory and provides us with a number of useful commands.
-
-What you want to do is go to the root directory where you've stored this project and run the following commands:
-```
-cp .env.example .env # make our environment variables accessible to the app
-make dev
+```bash
+cp .env.example .env
+docker-compose build
 ```
 
-This will build our app and all it's required services and libraries, as well as provide seed data for the database service.
+## Usage
 
-When `make dev` completes your app should be accessible from any web browser on your system at the following address:
+Check your `.env` file to map ports to your containers.
+
+```bash
+docker-compose up -d
 ```
-http://localhost:8000
+
+## Run Database Migrations
+
+```bash
+docker exec ${APP_CONTAINER_ID} node ace migration:run
+```
+
+## Run pgAdmin
+
+```bash
+sudo apt-get install -y exo-utils && \
+    exo-open http://localhost:8000
 ```
 
 ## Contributing
-
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
-
-[GNU](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+[BSD](https://opensource.org/licenses/BSD-3-Clause)
