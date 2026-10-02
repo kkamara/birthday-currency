@@ -1,6 +1,6 @@
 # Birthday Currency
 
-This Laravel 5 app allows users to discover the exchange rate for Hong Kong Dollar on the day of their birthday. Built with [laravel](https://www.laravel.com) and [fixer](https://fixer.io/).
+(08-Oct-2018) This Laravel 5 app allows users to discover the exchange rate for Hong Kong Dollar on the day of their birthday. Built with [laravel](https://www.laravel.com) and [fixer](https://fixer.io/).
 
 ## Installation
 
